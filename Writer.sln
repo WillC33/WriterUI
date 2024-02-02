@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer_sandbox", "Writer_sandbox\Writer_sandbox.csproj", "{011DD7E7-DB58-4618-8CBF-40728E34F979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriterUI", "WriterUI\WriterUI.csproj", "{CC0AA0EC-4F61-4A58-9778-06B60C2E9115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{011DD7E7-DB58-4618-8CBF-40728E34F979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011DD7E7-DB58-4618-8CBF-40728E34F979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011DD7E7-DB58-4618-8CBF-40728E34F979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011DD7E7-DB58-4618-8CBF-40728E34F979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC0AA0EC-4F61-4A58-9778-06B60C2E9115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC0AA0EC-4F61-4A58-9778-06B60C2E9115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC0AA0EC-4F61-4A58-9778-06B60C2E9115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC0AA0EC-4F61-4A58-9778-06B60C2E9115}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
