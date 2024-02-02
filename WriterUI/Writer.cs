@@ -14,6 +14,7 @@ public static class Writer
     public static T RequestInput<T>(string? request = null, ConsoleColor?  customColour = null)
     {
         Console.ForegroundColor = customColour ?? ConsoleColor.Cyan;
+        Console.WriteLine();
         Console.WriteLine(request);
         while (true)
         {
@@ -21,6 +22,7 @@ public static class Writer
             try
             {
                 T result = (T)Convert.ChangeType(input, typeof(T));
+                Console.ForegroundColor = ConsoleColor.White;
                 return result;
             }
             catch (FormatException)
