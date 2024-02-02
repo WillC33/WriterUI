@@ -1,9 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <AssemblyName>WriterUI</AssemblyName>
+        <RootNamespace>WriterUI</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <!-- NuGet metadata -->
+        <PackageId>WriterUI</PackageId>
+        <Version>1.0.1</Version>
+        <Authors>William Cooke</Authors>
+        <Description>WriterUI provides a set of convenient methods for interacting with the console, allowing you to display formatted messages, capture user input, and customize the console output to match your application's style.</Description>
+        <PackageTags>Console Helpers</PackageTags>
+        <PackageProjectUrl>https://github.com/WillC33/Writer</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Copyright William Cooke (c) 2024</Copyright>
+        <RepositoryUrl>https://github.com/WillC33/Writer</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryBranch>master</RepositoryBranch>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="README">
+            <Pack>true</Pack>
+            <PackagePath>content</PackagePath>
+        </None>
+        <None Update="LICENSE">
+            <Pack>true</Pack>
+            <PackagePath>content</PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>
