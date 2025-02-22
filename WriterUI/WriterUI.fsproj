@@ -21,19 +21,16 @@
         <RepositoryUrl>https://github.com/WillC33/Writer</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>master</RepositoryBranch>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
     <ItemGroup>
-        <None Update="README">
-            <Pack>true</Pack>
-            <PackagePath>content</PackagePath>
-        </None>
-        <None Update="LICENSE">
-            <Pack>true</Pack>
-            <PackagePath>content</PackagePath>
-        </None>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <Compile Include="Writer.fs" />
     </ItemGroup>
