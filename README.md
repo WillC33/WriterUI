@@ -4,73 +4,89 @@ Welcome to WriterUI, your go-to library for simplifying console-based user inter
 
 ## Description
 
-WriterUI provides a set of convenient methods for interacting with the console, allowing you to display formatted messages, capture user input, and customize the console output to match your application's style.
+WriterUI provides a set of functional methods for interacting with the console, allowing you to display formatted messages, capture user input, and customize the console output. Written in F# to leverage functional programming patterns and pipeline operations.
 
 ## Features
 
 ### 1. Formatted Messages
-Easily display formatted messages on the console with customizable colors.
+Display formatted messages with optional colors and spacing.
 
-```csharp
-Writer.Message("Welcome to the writer console UI helper!");
-Writer.Error("Oops! Something went wrong.");
-Writer.Warn("Warning: Proceed with caution."); 
+```fsharp
+message None "Welcome to the writer console UI helper!"
+error "Oops! Something went wrong."
+warn "Warning: Proceed with caution."
 ```
 
 ### 2. Input Capture
-Capture user input from the console, ensuring seamless integration into your application flow.
+Type-safe input capture with built-in error handling.
 
-```csharp
-int intInput = Writer.Input<int>("Please enter an integer:");
-bool boolInput = Writer.Input<bool>("Enter 'true' or 'false':");
-string strInput = Writer.Input("Enter a string:");
+```fsharp
+let intInput = inputTyped<int> None (Some "Please enter an integer:")
+let boolInput = inputTyped<bool> None (Some "Enter 'true' or 'false':")
+let strInput = input None (Some "Enter a string:")
 ```
-
 
 ### 3. Customisation
-Customise message colors and prompts to match your application's style.
+Customise colors and formatting using the WriteOptions record:
+   
+```fsharp
+message (Some { 
+    CustomColor = Some ConsoleColor.Magenta
+    BackgroundColor = Some ConsoleColor.Black
+    IncludeLineSpace = true 
+}) "Customized message!"
 
-```csharp
-Writer.Message("This message is in magenta color!", ConsoleColor.Magenta);
-string customColorInput = Writer.Input("Enter a string:", ConsoleColor.DarkCyan);
+let customInput = input 
+    (Some { 
+        CustomColor = Some ConsoleColor.DarkCyan
+        BackgroundColor = None
+        IncludeLineSpace = true 
+    }) 
+    (Some "Enter with style:")
 ```
 
-### 4. Type Safety
-Ensure type safety when capturing user input, preventing invalid inputs and runtime errors.
-
-```csharp
-// No compilation for impossible tasks!
-HttpClient badInput = Writer.Input<HttpClient>("Invalid input!");
-```
 ## Usage
-### Installation:
+### Installation
+Add the WriterUI library through NuGet Package Manager.
 
-Add the WriterUI library to your project through NuGet Package Manager or by downloading and referencing the assembly.
-### Usage:
+### Basic Usage
+```fsharp
+open WriterUI
 
-Import the WriterUI namespace into your code file.
-Use the provided methods (Message, Error, Warn, Input) to interact with the console.
-```csharp
-using WriterUI;
-
-Writer.Message("Welcome to my application!");
-int age = Writer.Input<int>("Please enter your age:");
+message None "Welcome to my application!"
+let age = inputTyped<int> None (Some "Please enter your age:")
 ```
 
-### Customisation:
-Experiment with different message colors and input prompts to enhance user experience.
-```csharp
-Writer.Message("This is a custom message.", ConsoleColor.Green);
-string userInput = Writer.Input("Enter a value:", ConsoleColor.Yellow);
+## Why F#?
+The library has been rewritten in F# to:  
+ - Better support functional programming patterns
+ - Enable pipeline operations with consistent parameter ordering
+ - Provide cleaner option handling
+ - Leverage F#'s type inference and pattern matching
+ - Simplify error handling 
+
+## Type Safety
+The library provides type-safe input handling using F#'s generic constraints:
+
+```fsharp
+let age = inputTyped<int> None (Some "Enter age:")  // Works
+let request = inputTyped<HttpClient> None (Some "Stringify an HttpClient?") // No way!
+let name = input None (Some "Enter name:")          // String input
 ```
 
-### Considerations
-- Error Handling: Writer will continue asking for input until a value can be converted when using Input\<T\>() but you might still need your own in some cases.
-- Input Validation: Always validate user input to prevent unexpected behavior or security vulnerabilities.
-- Thread Safety: Use synchronization mechanisms if accessing WriterUI methods concurrently from multiple threads.
-
-## Contributions
-Contributions to the WriterUI library are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on GitHub.
+## Considerations
+ - Error handling is built into inputTyped<'T> with recursive retry
+ - All functions handle None cases gracefully
+ - Background colors automatically reset to terminal defaults
+ - Thread-safe console operations
 
 ## License
-This library is licensed under the MIT License. See the LICENSE file for details.
+MIT License. See the LICENSE file for details.
+
+## v2.0.0 Key changes:
+- Updated syntax to show F# examples
+- Removed C# examples and namespace references
+- Added explanation for F# migration
+- Simplified API examples
+- Updated configuration examples to use F# record syntax
+- Added note about background color handling
